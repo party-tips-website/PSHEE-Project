@@ -5,7 +5,7 @@ function loadTips() {
     tips.forEach(tip => {
         const card = document.createElement("div");
         card.classList.add("tip-card");
-        card.innerHTML = `<h3>${tip.title}</h3><p>${tip.text}</p>`;
+        card.innerHTML = `<h2>${tip.title}</h2><p>${tip.text}</p>`;
         tipsContainer.appendChild(card);
     });
 }
@@ -13,7 +13,7 @@ function loadTips() {
 // Reveal cards on scroll
 function revealOnScroll() {
     const cards = document.querySelectorAll(".tip-card");
-    const trigger = window.innerHeight * 0.85;
+    const trigger = window.innerHeight * 0.75;
 
     cards.forEach(card => {
         const top = card.getBoundingClientRect().top;
