@@ -1,72 +1,100 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f0f3ff;
+    background: #eef1ff;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    padding: 20px;
     color: #333;
 }
 
-h1 {
+.title {
+    margin-top: 40px;
     color: #4a4ad8;
-    margin-bottom: 5px;
+    font-size: 2.3rem;
 }
 
 .subtitle {
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-#tips-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: 0 auto 30px;
-}
-
+/* Tip popup cards */
 .tip-card {
     background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    animation: slide-up 0.5s ease;
+    width: 80%;
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
 }
 
-#randomTipBtn {
+.tip-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Advice button */
+.advice-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
     background: #4a4ad8;
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 12px 18px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
-    margin-bottom: 15px;
+    z-index: 1000;
+    animation: pulse 2s infinite;
 }
 
-#randomTipBtn:hover {
+.advice-button:hover {
     background: #3737b3;
 }
 
-/* Simple animations */
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 100px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 350px;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Animations */
 .fade-in {
-    animation: fade-in 1s ease;
+    animation: fadeIn 1s ease forwards;
 }
 
-.bounce {
-    animation: bounce 1.5s infinite ease-in-out;
-}
-
-@keyframes fade-in {
+@keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes slide-up {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
