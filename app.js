@@ -1,11 +1,14 @@
 const tipsContainer = document.getElementById("tips-container");
 
-// Create each tip card
+// Create each full-screen tip card
 function loadTips() {
     tips.forEach(tip => {
         const card = document.createElement("div");
         card.classList.add("tip-card");
-        card.innerHTML = `<h2>${tip.title}</h2><p>${tip.text}</p>`;
+        card.innerHTML = `
+            <h2>${tip.title}</h2>
+            <p>${tip.description}</p>
+        `;
         tipsContainer.appendChild(card);
     });
 }
