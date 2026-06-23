@@ -11,7 +11,7 @@ body {
 .title {
     margin-top: 40px;
     color: #4a4ad8;
-    font-size: 2.3rem;
+    font-size: 2.5rem;
 }
 
 .subtitle {
@@ -19,24 +19,42 @@ body {
     margin-bottom: 40px;
 }
 
-/* Each tip takes up a full screen */
+/* FULL SCREEN TIP SECTIONS */
 .tip-card {
-    background: white;
-    width: 80%;
-    max-width: 400px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    height: 100vh;
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     opacity: 0;
     transform: translateY(60px);
-    transition: all 0.9s ease;
-    margin: 0 auto;
-    margin-bottom: 100vh; /* Forces scrolling */
+    transition: all 1s ease;
+
+    background: white;
+    border-radius: 0;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
 }
 
 .tip-card.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.tip-card h2 {
+    font-size: 2rem;
+    color: #4a4ad8;
+    margin-bottom: 20px;
+}
+
+.tip-card p {
+    max-width: 600px;
+    font-size: 1.2rem;
+    line-height: 1.6;
 }
 
 /* Advice button */
