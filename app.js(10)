@@ -1,0 +1,42 @@
+// app.js
+// Renders sections and handles navigation
+
+const contentEl = document.getElementById("content");
+const navButtons = document.querySelectorAll(".nav-btn");
+
+// Render a section by id
+function renderSection(id) {
+  const section = sections.find((s) => s.id === id);
+  if (!section) return;
+
+  contentEl.innerHTML = `
+    <section class="card">
+      <h2>${section.title}</h2>
+      <p class="intro">${section.intro}</p>
+      <h3>${section.tipsTitle}</h3>
+      <ul class="tips-list">
+        ${section.tips.map((tip) => `<li>${tip}</li>`).join("")}
+      </ul>
+    </section>
+  `;
+
+  // Update active button styling
+  navButtons.forEach((btn) => {
+    if (btn.getAttribute("data-section") === id) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
+// Attach click handlers to nav buttons
+navButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const sectionId = btn.getAttribute("data-section");
+    renderSection(sectionId);
+  });
+});
+
+// Initial section on load
+renderSection("peer-pressure");

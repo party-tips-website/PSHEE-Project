@@ -1,0 +1,220 @@
+/* style.css */
+/* Simple, eye-catching, teen-friendly design */
+
+:root {
+  --bg: #0f172a;
+  --card-bg: #111827;
+  --accent: #38bdf8;
+  --accent-soft: #1d4ed8;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --danger: #f97373;
+  --radius: 14px;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
+.site-header {
+  padding: 1.5rem 1.5rem 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7), transparent);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0.4rem 0 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Navigation */
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.nav-btn {
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-main);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.nav-btn:hover {
+  border-color: var(--accent);
+  color: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(56, 189, 248, 0.25);
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  border-color: transparent;
+  color: #0b1120;
+  box-shadow: 0 10px 24px rgba(56, 189, 248, 0.45);
+}
+
+/* Main content */
+
+.content {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 780px;
+  background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
+  border-radius: var(--radius);
+  padding: 1.8rem 1.6rem 1.6rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(129, 140, 248, 0.16), transparent 55%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.6rem;
+}
+
+.intro {
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #e0f2fe;
+}
+
+/* Tips list */
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.tips-list li {
+  position: relative;
+  padding: 0.55rem 0.7rem 0.55rem 2.1rem;
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.tips-list li::before {
+  content: "★";
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+/* Footer */
+
+.site-footer {
+  padding: 1rem 1.5rem 1.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  background: radial-gradient(circle at bottom, #020617 0, #000 70%);
+}
+
+.site-footer p {
+  margin: 0.1rem 0;
+}
+
+.refs-title {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.refs-list {
+  margin: 0.2rem 0 0;
+  padding-left: 1.1rem;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 1.4rem 1.1rem 1.2rem;
+  }
+
+  .tips-list li {
+    font-size: 0.9rem;
+  }
+}
