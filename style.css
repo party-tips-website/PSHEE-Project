@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f3ff;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    color: #4a4ad8;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#tips-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto 30px;
+}
+
+.tip-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    animation: slide-up 0.5s ease;
+}
+
+#randomTipBtn {
+    background: #4a4ad8;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+#randomTipBtn:hover {
+    background: #3737b3;
+}
+
+/* Simple animations */
+.fade-in {
+    animation: fade-in 1s ease;
+}
+
+.bounce {
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
