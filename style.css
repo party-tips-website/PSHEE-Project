@@ -1,29 +1,78 @@
+/* GENERAL */
 body {
-    font-family: Arial, sans-serif;
-    background: #eef1ff;
     margin: 0;
-    padding: 0;
-    text-align: center;
-    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7ff;
+    color: #222;
     overflow-x: hidden;
 }
 
-.title {
-    margin-top: 40px;
-    color: #4a4ad8;
-    font-size: 2.5rem;
+/* PROGRESS BAR */
+#progressBarContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0,0,0,0.05);
+    z-index: 900;
 }
 
-.subtitle {
-    color: #555;
-    margin-bottom: 40px;
+#progressBar {
+    height: 4px;
+    width: 0;
+    background: linear-gradient(90deg, #4a4ad8, #9fd3ff);
+    transition: width 0.2s ease-out;
 }
 
-/* FULL SCREEN TIP SECTIONS */
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #6a8dff, #9fd3ff);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-shape {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4), transparent);
+    top: -50px;
+    right: -80px;
+    filter: blur(10px);
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: fadeIn 1.2s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    animation: fadeIn 1.6s ease;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    font-size: 2rem;
+    opacity: 0.7;
+    animation: bounce 1.5s infinite;
+}
+
+/* TIP PANELS */
 .tip-card {
     height: 100vh;
-    width: 100%;
-    padding: 40px 20px;
+    padding: 50px 25px;
     box-sizing: border-box;
 
     display: flex;
@@ -32,12 +81,28 @@ body {
     align-items: center;
 
     opacity: 0;
-    transform: translateY(60px);
-    transition: all 1s ease;
+    transform: translateY(80px);
+    transition: all 0.9s ease;
 
     background: white;
-    border-radius: 0;
-    box-shadow: 0 0 0 rgba(0,0,0,0);
+    border-radius: 30px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.tip-card::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(154, 180, 255, 0.4), transparent);
+    top: -60px;
+    left: -60px;
+    filter: blur(8px);
 }
 
 .tip-card.visible {
@@ -45,19 +110,28 @@ body {
     transform: translateY(0);
 }
 
+.tip-card.slide-left.visible {
+    transform: translateX(-10px);
+}
+
+.tip-card.slide-right.visible {
+    transform: translateX(10px);
+}
+
 .tip-card h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #4a4ad8;
     margin-bottom: 20px;
 }
 
 .tip-card p {
-    max-width: 600px;
+    max-width: 700px;
     font-size: 1.2rem;
-    line-height: 1.6;
+    line-height: 1.8;
+    text-align: center;
 }
 
-/* Advice button */
+/* ADVICE BUTTON */
 .advice-button {
     position: fixed;
     top: 15px;
@@ -65,10 +139,12 @@ body {
     background: #4a4ad8;
     color: white;
     border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border-radius: 14px;
     cursor: pointer;
     z-index: 1000;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     animation: pulse 2s infinite;
 }
 
@@ -76,7 +152,7 @@ body {
     background: #3737b3;
 }
 
-/* Modal */
+/* MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -85,36 +161,38 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.45);
 }
 
 .modal-content {
     background: white;
     margin: 120px auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 350px;
-    border-radius: 12px;
-    text-align: left;
+    padding: 25px;
+    width: 85%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease;
 }
 
 .close {
     float: right;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
 }
 
-/* Animations */
-.fade-in {
-    animation: fadeIn 1s ease forwards;
-}
-
+/* ANIMATIONS */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.07); }
 }
