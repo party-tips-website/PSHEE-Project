@@ -1,10 +1,18 @@
 const tipsContainer = document.getElementById("tips-container");
 
-// Create each full-screen tip card
+// Build full-screen animated tip panels
 function loadTips() {
-    tips.forEach(tip => {
+    tips.forEach((tip, index) => {
         const card = document.createElement("div");
         card.classList.add("tip-card");
+
+        // Alternate slide direction for swipe feel
+        if (index % 2 === 0) {
+            card.classList.add("slide-left");
+        } else {
+            card.classList.add("slide-right");
+        }
+
         card.innerHTML = `
             <h2>${tip.title}</h2>
             <p>${tip.description}</p>
@@ -24,10 +32,24 @@ function revealOnScroll() {
             card.classList.add("visible");
         }
     });
+
+    updateProgress();
+}
+
+// Progress bar based on scroll
+function updateProgress() {
+    const progressBar = document.getElementById("progressBar");
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + "%";
 }
 
 window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+window.addEventListener("load", () => {
+    revealOnScroll();
+    updateProgress();
+});
 
 // Advice modal logic
 const adviceBtn = document.getElementById("adviceBtn");
