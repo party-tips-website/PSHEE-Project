@@ -94,6 +94,7 @@ body {
     overflow: hidden;
 }
 
+/* Soft blob background inside each tip */
 .tip-card::before {
     content: "";
     position: absolute;
@@ -110,6 +111,7 @@ body {
     transform: translateY(0);
 }
 
+/* Swipe-feel animations */
 .tip-card.slide-left.visible {
     transform: translateX(-10px);
 }
