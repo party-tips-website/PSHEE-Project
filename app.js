@@ -58,6 +58,8 @@ const closeAdvice = document.getElementById("closeAdvice");
 
 adviceBtn.onclick = () => adviceModal.style.display = "block";
 closeAdvice.onclick = () => adviceModal.style.display = "none";
-window.onclick = e => { if (e.target === adviceModal) adviceModal.style.display = "none"; };
+window.onclick = e => { 
+    if (e.target === adviceModal) adviceModal.style.display = "none"; 
+};
 
 loadTips();
